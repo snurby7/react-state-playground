@@ -15,7 +15,10 @@
             "main": "apps/mobx/src/main.tsx",
             "polyfills": "apps/mobx/src/polyfills.ts",
             "tsConfig": "apps/mobx/tsconfig.app.json",
-            "assets": ["apps/mobx/src/favicon.ico", "apps/mobx/src/assets"],
+            "assets": [
+              "apps/mobx/src/favicon.ico",
+              "apps/mobx/src/assets"
+            ],
             "styles": [],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
@@ -64,7 +67,10 @@
               "apps/mobx/tsconfig.app.json",
               "apps/mobx/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/mobx/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mobx/**/*"
+            ]
           }
         },
         "test": {
@@ -73,34 +79,6 @@
             "jestConfig": "apps/mobx/jest.config.js",
             "tsConfig": "apps/mobx/tsconfig.spec.json",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "mobx-e2e": {
-      "root": "apps/mobx-e2e",
-      "sourceRoot": "apps/mobx-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/mobx-e2e/cypress.json",
-            "tsConfig": "apps/mobx-e2e/tsconfig.e2e.json",
-            "devServerTarget": "mobx:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "mobx:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": ["apps/mobx-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/mobx-e2e/**/*"]
           }
         }
       }
