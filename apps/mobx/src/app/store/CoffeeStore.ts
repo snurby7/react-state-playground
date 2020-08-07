@@ -1,34 +1,58 @@
 import { createContext } from 'react'
-import { decorate, observable, computed, action } from 'mobx'
 import { ICoffee } from '../models/Coffee.interface'
+import { observable, action, computed } from 'mobx'
 
-export class CoffeeStore {
-  coffees: ICoffee[] = []
-
-  get remainingCoffees(): number {
-    return this.coffees.filter((coffee) => !coffee.hasPurchased).length
-  }
-
-  toggleCoffee = (index: number): void => {
-    this.coffees[index].hasPurchased = !this.coffees[index].hasPurchased
-  }
-
-  addCoffee = (): void => {
-    this.coffees = [
-      ...this.coffees,
+export function createCoffeeStore() {
+  return {
+    coffees: [
       {
-        name: 'testing',
-        roaster: 'roaster-test',
+        name: 'testy',
+        roaster: 'waffle',
         hasPurchased: false,
       },
-    ]
+    ] as ICoffee[],
+    remainingCoffees() {
+      return this.coffees.filter((coffee) => !coffee.hasPurchased).length
+    },
+    toggleCoffee: (index: number): void => {
+      this.coffees[index].hasPurchased = !this.coffees[index].hasPurchased
+    },
+    addCoffee: (): void => {
+      this.coffees = [
+        ...this.coffees,
+        {
+          name: 'testing',
+          roaster: 'roaster-test',
+          hasPurchased: false,
+        },
+      ]
+    },
   }
 }
 
-decorate(CoffeeStore, {
-  coffees: observable,
-  remainingCoffees: computed,
-  addCoffee: action,
-})
+export class CoffeeStore {
+  @observable
+  coffees = []
 
-export const CoffeeContext = createContext(new CoffeeStore())
+  @action
+  addCoffee() {
+    this.coffees.push({
+      name: 'testing',
+      roaster: 'roaster-test',
+      hasPurchased: false,
+    })
+  }
+
+  @computed
+  get coffeeCount() {
+    return this.coffees.length
+  }
+}
+
+export type TCoffeeStore = ReturnType<typeof createCoffeeStore>
+
+// decorate(CoffeeStore, {
+//   coffees: observable,
+//   remainingCoffees: computed,
+//   addCoffee: action,
+// })

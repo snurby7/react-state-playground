@@ -32,7 +32,6 @@
     "document-register-element": "1.13.1",
     "mobx": "^5.15.5",
     "mobx-react": "^6.2.5",
-    "mobx-react-lite": "^2.0.7",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
