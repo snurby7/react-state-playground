@@ -1,4 +1,4 @@
-# ReactStatePlayground
+# React State Playground
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -19,7 +19,9 @@ Since I love coffee, we'll just go with a coffee list.
 
 ## State libraries and how to run the app
 
-Before running, make sure to `npm install`
+Before running, make sure to `yarn`
+
+\*I have installed `nx` globally, but you can always replace `nx` in the scripts below with `yarn nx`
 
 ### [Mobx](https://mobx.js.org/)
 
@@ -65,7 +67,7 @@ TODO: coming soon
 
 ### Meteor ReactiveDict / ReactiveVar
 
-- [ReactiveDict]((https://docs.meteor.com/api/reactive-dict.html))
+- [ReactiveDict](<(https://docs.meteor.com/api/reactive-dict.html)>)
 - [ReactiveVar](https://docs.meteor.com/api/reactive-var.html)
 
 TODO: coming soon
