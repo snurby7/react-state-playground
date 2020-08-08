@@ -1,10 +1,10 @@
-import { observable, action, computed } from 'mobx'
+import { observable, action, computed, decorate } from 'mobx'
+import { createContext } from 'react'
+import { ICoffee } from '../models'
 
-export class CoffeeStore {
-  @observable
-  coffees = []
+class CoffeeStore {
+  coffees: ICoffee[] = []
 
-  @action
   addCoffee() {
     console.log(this)
     this.coffees.push({
@@ -14,13 +14,20 @@ export class CoffeeStore {
     })
   }
 
-  @action
   deleteCoffee(index: number): void {
     this.coffees = this.coffees.splice(index, 1)
   }
 
-  @computed
   get coffeeCount() {
     return this.coffees.length
   }
 }
+
+decorate(CoffeeStore, {
+  coffees: observable,
+  addCoffee: action,
+  deleteCoffee: action,
+  coffeeCount: computed,
+})
+
+export const CoffeeContext = createContext(new CoffeeStore())
