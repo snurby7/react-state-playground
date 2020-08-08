@@ -6,11 +6,9 @@ interface ICoffeeListProps {
   items: ICoffee[]
   onToggle: (coffeeIndex: number) => void
 }
-export const CoffeeList: React.FC<ICoffeeListProps> = ({
-  items,
-  onToggle,
-}): JSX.Element => {
-  console.log(items)
+
+// ! Important note: if this isn't an Observer, it won't re-render the list.
+export const CoffeeList = observer(({ items }: ICoffeeListProps) => {
   const onItemClick = (index: number) => () => {
     console.log('-----', index)
   }
@@ -21,4 +19,4 @@ export const CoffeeList: React.FC<ICoffeeListProps> = ({
       ))}
     </div>
   )
-}
+})

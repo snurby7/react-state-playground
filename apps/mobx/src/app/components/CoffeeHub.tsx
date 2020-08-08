@@ -1,13 +1,21 @@
-import React, { useContext } from 'react'
-import { CoffeeContext } from '../store'
+import { observer } from 'mobx-react'
+import React from 'react'
+import { useStores } from '../hooks/use-stores'
 import { CoffeeList } from './CoffeeList'
 
-export const CoffeeHub: React.FC = (): JSX.Element => {
-  const store = useContext(CoffeeContext)
-  return (
-    <div>
-      <CoffeeList items={store.coffees} onToggle={store.toggleCoffee} />
-      <button onClick={store.addCoffee}>Add Coffee</button>
-    </div>
-  )
-}
+export const CoffeeHub = observer(
+  (): JSX.Element => {
+    const { coffeeStore } = useStores()
+    return (
+      <div>
+        <CoffeeList
+          items={coffeeStore.coffees}
+          onToggle={() => {
+            console.log('here it is')
+          }}
+        />
+        <button onClick={() => coffeeStore.addCoffee()}>Add Coffee</button>
+      </div>
+    )
+  }
+)
