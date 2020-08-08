@@ -8,12 +8,7 @@ export const CoffeeHub = observer(
     const { coffeeStore } = useStores()
     return (
       <div>
-        <CoffeeList
-          items={coffeeStore.coffees}
-          onToggle={() => {
-            console.log('here it is')
-          }}
-        />
+        <CoffeeList items={coffeeStore.coffees} />
         <button onClick={() => coffeeStore.addCoffee()}>Add Coffee</button>
       </div>
     )

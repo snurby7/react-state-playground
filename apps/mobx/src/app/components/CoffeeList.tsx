@@ -1,10 +1,9 @@
 import React from 'react'
 import { ICoffee } from '../models'
 import { CoffeeItem } from './CoffeeItem'
-import { observer, useLocalStore } from 'mobx-react'
+import { observer } from 'mobx-react'
 interface ICoffeeListProps {
   items: ICoffee[]
-  onToggle: (coffeeIndex: number) => void
 }
 
 // ! Important note: if this isn't an Observer, it won't re-render the list.
