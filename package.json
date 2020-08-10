@@ -31,6 +31,7 @@
     "@emotion/styled": "10.0.27",
     "document-register-element": "1.13.1",
     "mobx": "^5.15.5",
+    "mobx-devtools-mst": "^0.9.22",
     "mobx-react": "^6.2.5",
     "mobx-state-tree": "^3.17.2",
     "react": "16.13.1",
@@ -54,6 +55,7 @@
     "@types/node": "~8.9.4",
     "@types/react": "16.9.38",
     "@types/react-dom": "16.9.8",
+    "@types/react-router-dom": "5.1.5",
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
     "babel-jest": "25.1.0",
@@ -71,7 +73,6 @@
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3",
-    "@types/react-router-dom": "5.1.5"
+    "typescript": "~3.9.3"
   }
 }
