@@ -82,6 +82,88 @@
           }
         }
       }
+    },
+    "mobx-state-tree": {
+      "root": "apps/mobx-state-tree",
+      "sourceRoot": "apps/mobx-state-tree/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/mobx-state-tree",
+            "index": "apps/mobx-state-tree/src/index.html",
+            "main": "apps/mobx-state-tree/src/main.tsx",
+            "polyfills": "apps/mobx-state-tree/src/polyfills.ts",
+            "tsConfig": "apps/mobx-state-tree/tsconfig.app.json",
+            "assets": [
+              "apps/mobx-state-tree/src/favicon.ico",
+              "apps/mobx-state-tree/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/mobx-state-tree/src/environments/environment.ts",
+                  "with": "apps/mobx-state-tree/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "mobx-state-tree:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "mobx-state-tree:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/mobx-state-tree/tsconfig.app.json",
+              "apps/mobx-state-tree/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mobx-state-tree/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mobx-state-tree/jest.config.js",
+            "tsConfig": "apps/mobx-state-tree/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

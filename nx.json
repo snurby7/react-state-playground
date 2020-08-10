@@ -29,6 +29,9 @@
   "projects": {
     "mobx": {
       "tags": []
+    },
+    "mobx-state-tree": {
+      "tags": []
     }
   }
 }
