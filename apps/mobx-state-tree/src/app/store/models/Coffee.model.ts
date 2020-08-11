@@ -1,7 +1,13 @@
-import { types } from 'mobx-state-tree'
-import { string } from 'mobx-state-tree/dist/internal'
+import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree'
+import { Roaster } from './Roaster.model'
 
-export const CoffeeModel = types.model({
-  name: string,
-  roaster: string,
-})
+export const Coffee = types
+  .model({
+    name: types.string,
+    roaster: types.reference(Roaster),
+  })
+  .actions((self) => ({}))
+
+export interface ICoffee extends Instance<typeof Coffee> {}
+export interface ICoffeeSnapshotIn extends SnapshotIn<typeof Coffee> {}
+export interface ICoffeeSnapshotOut extends SnapshotOut<typeof Coffee> {}

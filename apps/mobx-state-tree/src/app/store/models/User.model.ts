@@ -1,6 +1,10 @@
-import { types } from 'mobx-state-tree'
-import { string } from 'mobx-state-tree/dist/internal'
+import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree'
 
-export const UserModel = types.model({
-  name: string,
+export const User = types.model('User', {
+  id: types.identifier,
+  name: types.string,
 })
+
+export interface IUser extends Instance<typeof User> {}
+export interface IUserSnapshotIn extends SnapshotIn<typeof User> {}
+export interface IUserSnapshotOut extends SnapshotOut<typeof User> {}

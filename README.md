@@ -34,6 +34,7 @@ Status: In Progress
 Status: In Progress
 
 `nx serve mobx-state-tree`
+`yarn start:mst`
 
 ### [React Context](https://reactjs.org/docs/context.html)
 
