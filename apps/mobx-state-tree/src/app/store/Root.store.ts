@@ -1,7 +1,8 @@
 import { Instance, onSnapshot, types } from 'mobx-state-tree'
-import { Coffee, ICoffee, Roaster, User } from './models'
+import { createContext, useContext } from 'react'
+import { Coffee, ICoffee, Roaster, User, IRoaster } from './models'
 
-export const RootStore = types
+export const RootModel = types
   .model({
     coffees: types.array(Coffee),
     users: types.map(User),
@@ -11,9 +12,12 @@ export const RootStore = types
     addCoffee(coffee: ICoffee) {
       self.coffees.push(coffee)
     },
+    addRoaster(id: string, roaster) {
+      self.roasters.set(id, roaster)
+    },
   }))
 
-const rootStore = RootStore.create({
+export const rootStore = RootModel.create({
   coffees: [
     {
       name: 'testing',
@@ -26,15 +30,17 @@ const rootStore = RootStore.create({
   },
 })
 
-export const store = rootStore
-export interface IRootStore extends Instance<typeof RootStore> {}
-
 const states = []
 let currentFrame = -1
 
-onSnapshot(store, (snapshot) => {
+onSnapshot(rootStore, (snapshot) => {
   if (currentFrame === states.length - 1) {
     currentFrame++
     states.push(snapshot)
   }
 })
+
+export type RootInstance = Instance<typeof RootModel>
+export const RootStoreContext = createContext<null | RootInstance>(null)
+
+export const Provider = RootStoreContext.Provider

@@ -2,13 +2,9 @@ import React from 'react'
 
 import styled from '@emotion/styled'
 
-import { ReactComponent as Logo } from './logo.svg'
-import star from './star.svg'
-
-import { Route, Link } from 'react-router-dom'
 import { CoffeeForm, RoasterForm, UserForm } from './components'
 import { CoffeeList } from './components/CoffeeList'
-import { IRootStore, store } from './store'
+import { Provider, rootStore } from './store'
 
 const StyledApp = styled.div`
   font-family: sans-serif;
@@ -146,19 +142,21 @@ export const App = () => {
    * Note: The corresponding styles are in the ./app.@emotion/styled file.
    */
   return (
-    <StyledApp>
-      <header className="flex">
-        <h1>Welcome to mobx-state-tree!</h1>
-      </header>
-      <main>
-        <div>
-          <CoffeeList store={store} />
-          <CoffeeForm />
-          <RoasterForm />
-          <UserForm />
-        </div>
-      </main>
-    </StyledApp>
+    <Provider value={rootStore}>
+      <StyledApp>
+        <header className="flex">
+          <h1>Welcome to mobx-state-tree!</h1>
+        </header>
+        <main>
+          <div>
+            <CoffeeList />
+            <CoffeeForm />
+            <RoasterForm />
+            <UserForm />
+          </div>
+        </main>
+      </StyledApp>
+    </Provider>
   )
 }
 
