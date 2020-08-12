@@ -4,15 +4,14 @@ import { IRoaster } from '../store'
 import { useStore } from '../store/useStore'
 
 export const CoffeeList = (): JSX.Element => {
-  const store = useStore()
+  const { coffeeStore } = useStore()
   return (
     <div>
       <h2>Coffee List</h2>
-      {values(store.coffees).map((coffee) => {
-        const roaster = coffee.roaster as IRoaster
+      {coffeeStore.coffees.map((coffee) => {
         return (
           <span>
-            {roaster.name} - {coffee.name}
+            {coffee.roaster.name} - {coffee.name}
           </span>
         )
       })}

@@ -4,7 +4,6 @@ import { useStore } from '../store'
 interface RoasterFormProps {}
 export const RoasterForm: React.FC<RoasterFormProps> = ({}): JSX.Element => {
   const [roasterName, setRoasterName] = useState('')
-  const store = useStore()
 
   const onRoasterNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setRoasterName(event.target.value)
@@ -12,7 +11,6 @@ export const RoasterForm: React.FC<RoasterFormProps> = ({}): JSX.Element => {
 
   const onFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    store.addRoaster(roasterName, { name: roasterName, id: roasterName })
   }
 
   return (

@@ -1,7 +1,4 @@
 export {
-  ICoffee,
-  ICoffeeSnapshotIn,
-  ICoffeeSnapshotOut,
   IRoaster,
   IRoasterSnapshotIn,
   IRoasterSnapshotOut,

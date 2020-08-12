@@ -1,32 +1,24 @@
 import { Instance, onSnapshot, types } from 'mobx-state-tree'
-import { createContext, useContext } from 'react'
-import { Coffee, ICoffee, Roaster, User, IRoaster } from './models'
+import { createContext } from 'react'
+import { CoffeesStore, RoastersStore } from './models'
 
-export const RootModel = types
-  .model({
-    coffees: types.array(Coffee),
-    users: types.map(User),
-    roasters: types.map(Roaster),
-  })
-  .actions((self) => ({
-    addCoffee(coffee: ICoffee) {
-      self.coffees.push(coffee)
-    },
-    addRoaster(id: string, roaster) {
-      self.roasters.set(id, roaster)
-    },
-  }))
+export const RootModel = types.model({
+  coffeeStore: CoffeesStore,
+  //  userbase: User,
+  roasterStore: RoastersStore,
+})
 
 export const rootStore = RootModel.create({
-  coffees: [
-    {
-      name: 'testing',
-      roaster: 1,
-    },
-  ],
-  users: {},
-  roasters: {
-    1: { id: '1', name: 'Roasty' },
+  coffeeStore: {
+    coffees: [
+      {
+        name: 'Example Coffee',
+        roaster: 'test-123',
+      },
+    ],
+  },
+  roasterStore: {
+    roasters: [{ name: 'Default Roaster', id: 'test-123' }],
   },
 })
 
