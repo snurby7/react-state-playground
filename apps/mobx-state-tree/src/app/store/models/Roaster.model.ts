@@ -11,10 +11,17 @@ export const Roaster = types
     },
   }))
 
-export const RoastersStore = types.model({
-  roasters: types.optional(types.array(Roaster), []),
-})
+type RoasterType = typeof Roaster
+export interface IRoasterSnapshotIn extends SnapshotIn<RoasterType> {}
+export interface IRoasterReference {}
 
-export interface IRoaster extends Instance<typeof Roaster> {}
-export interface IRoasterSnapshotIn extends SnapshotIn<typeof Roaster> {}
-export interface IRoasterSnapshotOut extends SnapshotOut<typeof Roaster> {}
+export const RoastersStore = types
+  .model({
+    roasters: types.optional(types.array(Roaster), []),
+  })
+  .actions((self) => ({
+    addRoaster(roaster: IRoasterSnapshotIn | Instance<RoasterType>) {
+      self.roasters.push(roaster)
+      console.log(self.roasters)
+    },
+  }))

@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from '@emotion/styled'
 
-import { CoffeeForm, RoasterForm, UserForm } from './components'
+import { CoffeeForm, RoasterForm, UserForm, RoasterList } from './components'
 import { CoffeeList } from './components/CoffeeList'
 import { Provider, rootStore } from './store'
 
@@ -149,7 +149,6 @@ export const App = () => {
         </header>
         <main>
           <div>
-            <CoffeeList />
             <CoffeeForm />
             <RoasterForm />
             <UserForm />

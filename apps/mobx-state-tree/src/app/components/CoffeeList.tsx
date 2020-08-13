@@ -1,20 +1,23 @@
-import { values } from 'mobx'
 import React from 'react'
-import { IRoaster } from '../store'
-import { useStore } from '../store/useStore'
+import { observer } from 'mobx-react'
+import { ICoffeeComplex } from '../store/models'
 
-export const CoffeeList = (): JSX.Element => {
-  const { coffeeStore } = useStore()
-  return (
-    <div>
-      <h2>Coffee List</h2>
-      {coffeeStore.coffees.map((coffee) => {
-        return (
-          <span>
-            {coffee.roaster.name} - {coffee.name}
-          </span>
-        )
-      })}
-    </div>
-  )
+interface ICoffeeListProps {
+  coffees: ICoffeeComplex[]
 }
+export const CoffeeList = observer(
+  ({ coffees }: ICoffeeListProps): JSX.Element => {
+    return (
+      <div>
+        <h2>Coffee List</h2>
+        {coffees.map((coffee) => {
+          return (
+            <span>
+              {coffee.name}- {coffee.roaster.name}
+            </span>
+          )
+        })}
+      </div>
+    )
+  }
+)
