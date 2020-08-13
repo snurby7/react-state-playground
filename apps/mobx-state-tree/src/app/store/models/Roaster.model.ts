@@ -22,6 +22,5 @@ export const RoastersStore = types
   .actions((self) => ({
     addRoaster(roaster: IRoasterSnapshotIn | Instance<RoasterType>) {
       self.roasters.push(roaster)
-      console.log(self.roasters)
     },
   }))

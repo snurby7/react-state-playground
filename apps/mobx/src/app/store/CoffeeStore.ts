@@ -6,7 +6,6 @@ class CoffeeStore {
   coffees: ICoffee[] = []
 
   addCoffee() {
-    console.log(this)
     this.coffees.push({
       name: 'testing',
       roaster: 'roaster-test',
